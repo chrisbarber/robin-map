@@ -479,6 +479,18 @@ public:
         pointer operator->() const {
             return std::addressof(m_bucket->value());
         }
+
+        // unsafe!
+        size_t operator-(const robin_iterator& other) const {
+            return m_bucket - other.m_bucket;
+        }
+
+        // unsafe!
+        robin_iterator operator+(size_t offset) const {
+            robin_iterator tmp(*this);
+            tmp.m_bucket += offset;
+            return tmp;
+        }
         
         robin_iterator& operator++() {
             while(true) {
@@ -721,6 +733,10 @@ public:
         return m_buckets_data.max_size();
     }
     
+    size_type capacity() const noexcept {
+        return m_buckets_data.capacity();
+    }
+
     /*
      * Modifiers
      */

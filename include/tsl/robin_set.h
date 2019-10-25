@@ -226,6 +226,7 @@ public:
     bool empty() const noexcept { return m_ht.empty(); }
     size_type size() const noexcept { return m_ht.size(); }
     size_type max_size() const noexcept { return m_ht.max_size(); }
+    size_type capacity() const noexcept { return m_ht.capacity(); }
     
     /*
      * Modifiers

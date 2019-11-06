@@ -491,6 +491,10 @@ public:
             tmp.m_bucket += offset;
             return tmp;
         }
+
+        bucket_entry_ptr get_bucket() {
+            return m_bucket;
+        }
         
         robin_iterator& operator++() {
             while(true) {
@@ -734,7 +738,11 @@ public:
     }
     
     size_type capacity() const noexcept {
-        return m_buckets_data.capacity();
+        return m_bucket_count;
+    }
+
+    bucket_entry* get_bucket(size_t i) {
+        return m_buckets + i;
     }
 
     /*

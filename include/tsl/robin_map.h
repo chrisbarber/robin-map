@@ -234,6 +234,7 @@ public:
     const_iterator end() const noexcept { return m_ht.end(); }
     const_iterator cend() const noexcept { return m_ht.cend(); }
     
+    detail_robin_hash::bucket_entry<value_type, StoreHash>* get_bucket(size_t i) { return m_ht.get_bucket(i); }
     
     /*
      * Capacity
